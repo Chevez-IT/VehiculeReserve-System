@@ -38,12 +38,6 @@ Route::post('/verificacion/correo', [RestaurarContrasenaController::class, 'chec
 
 
 
-
-
-
-
-
-
 /* Route::get('/insertar-usuarios', [UsuarioController::class, 'insertarUsuarios']);
 Route::get('/insertar-roles', [RolController::class, 'insertarRoles']); */
 
