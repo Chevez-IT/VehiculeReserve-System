@@ -1,7 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\RestaurarContrasenaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +18,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+
+Route::middleware('check.session')->group(function () {
+    Route::view('/', 'acceso.login')->name('login.form');
+    Route::view('/recuperar-contraseña', 'acceso.recuperar-contraseña')->name('recuperar.contraseña.form');
+    Route::view('/nueva-contraseña', 'acceso.nueva-contraseña')->name('restablecer.contraseña.form');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Rutas de autenticación
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+//Rutas de recuperacion de contraseña
+Route::post('/verificacion/correo', [RestaurarContrasenaController::class, 'checkCorreo']) ->name('verificar.correo');
 
-require __DIR__.'/auth.php';
+
+/* Route::get('/insertar-usuarios', [UsuarioController::class, 'insertarUsuarios']);
+Route::get('/insertar-roles', [RolController::class, 'insertarRoles']); */
+
+//Rutas de Errores:
+Route::view('/404', 'error.404')->name('404');
