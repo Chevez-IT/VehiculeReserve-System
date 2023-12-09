@@ -32,6 +32,20 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //Rutas de recuperacion de contraseña
 Route::post('/verificacion/correo', [RestaurarContrasenaController::class, 'checkCorreo']) ->name('verificar.correo');
 
+<<<<<<< HEAD
+=======
+//Usuario
+
+
+
+
+
+
+
+
+
+
+>>>>>>> e81aba99c6236142d177c7165a2302e2f7f08544
 
 /* Route::get('/insertar-usuarios', [UsuarioController::class, 'insertarUsuarios']);
 Route::get('/insertar-roles', [RolController::class, 'insertarRoles']); */

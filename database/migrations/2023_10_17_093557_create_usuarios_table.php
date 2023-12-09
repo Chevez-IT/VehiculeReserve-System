@@ -22,7 +22,6 @@ return new class extends Migration
             $table->enum('estado_usuario', ['Activo', 'Inactivo']);
             $table->timestamp('creacion_usuario')->useCurrent();
             $table->timestamp('actualizacion_usuario')->nullable()->default(null)->useCurrentOnUpdate();
-
             $table->foreign('rol_id')->references('rol_id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
         });
     }
