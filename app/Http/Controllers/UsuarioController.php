@@ -24,3 +24,4 @@ class UsuarioController extends Controller
         return response()->json(['mensaje' => 'Usuarios insertados con éxito']);
     } */
 }
+

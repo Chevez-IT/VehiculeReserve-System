@@ -25,14 +25,22 @@
                     </div>
                     <div class="card-body">
                         <form role="form" method="POST" action="#">
+                            @csrf
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Tokens de verificacion"
+                                    aria-label="Tokens de verificacion" required value="{{ $token }}">
+                            </div>
+                            <label for="correo_usuario" class="text-sm">Token compartido:</label>
                             <div class="mb-3">
                                 <input type="text" class="form-control" placeholder="Tokens de verificacion"
                                     aria-label="Tokens de verificacion" required>
                             </div>
+                            <label for="correo_usuario" class="text-sm">Nueva contraseña:</label>
                             <div class="mb-3">
                                 <input type="password" id="nueva-contrasena" class="form-control form-control-lg"
                                     placeholder="Nueva contraseña" aria-label="Contraseña" required>
                             </div>
+                            <label for="correo_usuario" class="text-sm">Confirmar contraseña</label>
                             <div class="mb-3">
                                 <input type="password" id="confirmar-contrasena" class="form-control form-control-lg"
                                     placeholder="Confirmar nueva contraseña" aria-label="Contraseña" required>

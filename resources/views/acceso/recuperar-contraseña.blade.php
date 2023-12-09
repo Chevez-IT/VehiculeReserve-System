@@ -10,7 +10,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 text-center mx-auto">
                     <h1 class="text-white mb-3 mt-1">Recupera tu contraseña</h1>
-                    <p class="text-lead text-white">Utiliza tu correo institucional con el que se te haya registrado para poder recuperar o generar otra contraseña</p>
+                    <p class="text-lead text-white">Utiliza tu correo institucional con el que se te haya registrado para
+                        poder recuperar o generar otra contraseña</p>
                 </div>
             </div>
         </div>
@@ -23,15 +24,18 @@
                         <h5>Recuperacion de contraseña</h5>
                     </div>
                     <div class="card-body">
-                        <form role="form">
+                        <form method="POST" action="{{ route('verificar.correo') }}">
+                            @csrf
+                            <label for="correo_usuario" class="text-sm">Correo vinculado:</label>
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Email" aria-label="Email" required>
+                                <input type="email" name="correo_usuario" class="form-control" placeholder="Correo de la cuenta" aria-label="Correo" required>
                             </div>
                             <div class="text-center">
-                                <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Verificar correo</button>
+                                <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Verificar correo</button>
                             </div>
-                            <p class="text-sm mt-3 mb-0">¿Ya recordaste tu contraseña? <a href="javascript:;"
-                                    class="text-dark font-weight-bolder">Regresar</a></p>
+                            <p class="text-sm mt-3 mb-0">¿Ya recordaste tu contraseña?
+                                <a href="{{ route('login.form') }}" class="text-dark font-weight-bolder">Regresar</a>
+                            </p>
                         </form>
                     </div>
                 </div>

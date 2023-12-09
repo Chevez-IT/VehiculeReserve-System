@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\RestaurarContrasenaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,19 @@ Route::middleware('check.session')->group(function () {
 // Rutas de autenticación
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+//Rutas de recuperacion de contraseña
+Route::post('/verificacion/correo', [RestaurarContrasenaController::class, 'checkCorreo']) ->name('verificar.correo');
+
+//Usuario
+
+
+
+
+
+
+
+
 
 
 
