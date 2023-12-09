@@ -8,7 +8,7 @@ use App\Models\Rol;
 
 class RolController extends Controller
 {
-    public function insertarRoles()
+    /* public function insertarRoles()
     {
         $roles = [
             ['rol' => 'Administrador', 'estado_rol' => 'Activo'],
@@ -21,5 +21,5 @@ class RolController extends Controller
         }
 
         return response()->json(['mensaje' => 'Roles insertados con éxito']);
-    }
+    } */
 }

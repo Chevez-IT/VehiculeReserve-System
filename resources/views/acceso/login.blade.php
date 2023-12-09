@@ -14,24 +14,25 @@
                                 <p class="mb-0">Ingresa al sistema con tus credenciales</p>
                             </div>
                             <div class="card-body">
-                                <form role="form">
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
                                     <div class="mb-3">
-                                        <input type="text" class="form-control form-control-lg" placeholder="Correo o Usuario"
+                                        <input type="text" name="credencial_usuario" class="form-control form-control-lg" placeholder="Correo o Usuario"
                                             aria-label="Correo o Usuario">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="password" class="form-control form-control-lg" placeholder="Contraseña"
+                                        <input type="password" name="contrasena_usuario"class="form-control form-control-lg" placeholder="Contraseña"
                                             aria-label="Contraseña">
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-lg btn-primary bg-gradient btn-lg w-100 mt-4 mb-0 letter-spacing-1">Ingresar</button>
+                                        <button type="submit" class="btn btn-lg btn-primary bg-gradient btn-lg w-100 mt-4 mb-0 letter-spacing-1">Iniciar Sesión</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                 <p class="mb-4 text-sm mx-auto">
                                     ¿Olvidaste tu contraseña?
-                                    <a href="{{ route('recuperar-contraseña') }}" class="text-primary text-gradient font-weight-bold">Recuperala Aqui</a>
+                                    <a href="{{ route('recuperar.contraseña.form') }}" class="text-primary text-gradient font-weight-bold">Recuperala Aqui</a>
                                 </p>
                             </div>
                         </div>
