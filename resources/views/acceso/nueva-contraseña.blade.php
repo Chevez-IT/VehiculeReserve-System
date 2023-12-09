@@ -38,11 +38,11 @@
                                     placeholder="Confirmar nueva contraseña" aria-label="Contraseña" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Cambiar
-                                    contraseña</button>
+                                <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Cambiar contraseña</button>
                             </div>
-                            <p class="text-sm mt-3 mb-0">¿Ya recordaste tu contraseña? <a href="javascript:;"
-                                    class="text-dark font-weight-bolder">Regresar</a></p>
+                            <p class="text-sm mt-3 mb-0">¿Ya recordaste tu contraseña?
+                                <a href="javascript:;" class="text-dark font-weight-bolder">Regresar</a>
+                            </p>
                         </form>
                     </div>
                 </div>

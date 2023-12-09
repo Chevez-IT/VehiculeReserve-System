@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'acceso.login')->name('login');
-Route::view('/recuperar-contraseña', 'acceso.recuperar-contraseña')->name('recuperar-contraseña');
-Route::view('/nueva-contraseña', 'acceso.nueva-contraseña')->name('nueva-contraseña');
+Route::middleware('check.session')->group(function () {
+    Route::view('/', 'acceso.login')->name('login');
+    Route::view('/recuperar-contraseña', 'acceso.recuperar-contraseña')->name('recuperar-contraseña');
+    Route::view('/nueva-contraseña', 'acceso.nueva-contraseña')->name('nueva-contraseña');
+});
+
+//Rutas de Errores:
+Route::view('/404', 'error.404')->name('404');
