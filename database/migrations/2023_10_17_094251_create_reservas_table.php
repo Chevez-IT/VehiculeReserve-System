@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reservas', function (Blueprint $table) {
-            $table->string('reserva_id', 10);
+            $table->string('reserva_id', 10)->primary();
             $table->string('detalle_reserva_id', 12);
             $table->string('solicitante_id', 12);
             $table->string('vehiculo_id', 10);
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('estado_reserva', ['Aprobada', 'Rechazada', 'Realizada', 'En espera']);
             $table->timestamp('creacion_reserva')->useCurrent();
             $table->timestamp('actualizacion_reserva')->useCurrentOnUpdate();
-        
+
             $table->foreign('detalle_reserva_id')->references('detalle_reserva_id')->on('detalles_reservas');
             $table->foreign('solicitante_id')->references('solicitante_id')->on('solicitantes');
             $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos');

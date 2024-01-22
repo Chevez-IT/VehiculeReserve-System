@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detalles_reservas', function (Blueprint $table) {
-            $table->string('detalle_reserva_id', 12);
+            $table->string('detalle_reserva_id', 12)->primary();
             $table->date('fecha_reserva');
             $table->double('km_inicial');
             $table->double('km_final');

@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        chema::create('vehiculos', function (Blueprint $table) {
-            $table->string('vehiculo_id', 10);
+        Schema::create('vehiculos', function (Blueprint $table) {
+            $table->string('vehiculo_id', 10)->primary();
             $table->string('marca_vehiculo', 255);
             $table->string('modelo_vehiculo', 255);
             $table->string('año_vehiculo', 5);
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->timestamp('actualizacion_vehiculo')->useCurrentOnUpdate();
             $table->enum('estado_vehiculo', ['Activo', 'Inactivo', 'En mantenimiento']);
             $table->string('creador_id', 12);
-        
+
             $table->foreign('creador_id')->references('admin_id')->on('administradores');
         });
     }

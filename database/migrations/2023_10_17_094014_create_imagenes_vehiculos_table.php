@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('imagenes_vehiculos', function (Blueprint $table) {
-            $table->string('imagen_id', 12);
+            $table->string('imagen_id', 12)->primary();
             $table->string('vehiculo_id', 10);
             $table->string('nombre_imagen', 255);
             $table->string('imagen', 255);
-        
+
             $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos');
         });
     }

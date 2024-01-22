@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('administradores', function (Blueprint $table) {
-            $table->string('admin_id', 12);
+            $table->string('admin_id', 12)->primary();
             $table->string('foto_admin', 255);
             $table->string('usuario_id', 10);
             $table->string('nombres_admin', 255);
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->enum('estado_admin', ['Activo', 'Inactivo']);
             $table->timestamp('creacion_admin')->useCurrent();
             $table->timestamp('actualizacion_admin')->useCurrentOnUpdate();
-        
+
             $table->foreign('usuario_id')->references('usuario_id')->on('usuarios');
         });
     }

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('solicitantes', function (Blueprint $table) {
-            $table->string('solicitante_id', 12);
+            $table->string('solicitante_id', 12)->primary();
             $table->string('usuario_id', 10);
             $table->string('foto_solicitante', 255);
             $table->string('nombres_solicitante', 255);
@@ -24,8 +24,9 @@ return new class extends Migration
             $table->string('creador_id', 12);
             $table->timestamp('creacion_solicitante')->useCurrent();
             $table->timestamp('actualizacion_solicitante')->useCurrentOnUpdate();
-        
+
             $table->foreign('usuario_id')->references('usuario_id')->on('usuarios');
+            $table->foreign('creador_id')->references('gestor_id')->on('gestores');
         });
     }
     /**

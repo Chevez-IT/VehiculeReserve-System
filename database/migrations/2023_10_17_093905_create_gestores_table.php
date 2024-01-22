@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('gestores', function (Blueprint $table) {
-            $table->string('gestor_id', 12);
+            $table->string('gestor_id', 12)->primary();
             $table->string('usuario_id', 10);
             $table->string('foto_gestor', 255);
             $table->string('nombres_gestor', 255);
@@ -24,8 +24,9 @@ return new class extends Migration
             $table->enum('estado_gestor', ['Activo', 'Inactivo']);
             $table->timestamp('creacion_gestor')->useCurrent();
             $table->timestamp('actualizacion_gestor')->useCurrentOnUpdate();
-        
+
             $table->foreign('usuario_id')->references('usuario_id')->on('usuarios');
+            $table->foreign('creador_id')->references('admin_id')->on('administradores');
         });
     }
 
