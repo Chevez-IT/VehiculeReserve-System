@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nombre_imagen', 255);
             $table->string('imagen', 255);
 
-            $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos');
+            $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

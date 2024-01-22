@@ -21,8 +21,8 @@ return new class extends Migration
             $table->enum('estado_mensaje', ['Enviado', 'Leido']);
             $table->timestamp('creacion_mensaje')->useCurrent();
 
-            $table->foreign('emisor_id')->references('usuario_id')->on('usuarios');
-            $table->foreign('conversacion_id')->references('conversacion_id')->on('conversaciones');
+            $table->foreign('emisor_id')->references('usuario_id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('conversacion_id')->references('conversacion_id')->on('conversaciones')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -23,10 +23,10 @@ return new class extends Migration
             $table->string('creador_id', 12);
             $table->enum('estado_gestor', ['Activo', 'Inactivo']);
             $table->timestamp('creacion_gestor')->useCurrent();
-            $table->timestamp('actualizacion_gestor')->useCurrentOnUpdate();
+            $table->timestamp('actualizacion_gestor')->nullable()->useCurrentOnUpdate();
 
-            $table->foreign('usuario_id')->references('usuario_id')->on('usuarios');
-            $table->foreign('creador_id')->references('admin_id')->on('administradores');
+            $table->foreign('usuario_id')->references('usuario_id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('creador_id')->references('admin_id')->on('administradores')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

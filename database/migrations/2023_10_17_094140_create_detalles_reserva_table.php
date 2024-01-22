@@ -27,7 +27,7 @@ return new class extends Migration
             $table->text('notas_reserva');
             $table->text('comentarios_reserva');
             $table->timestamp('creacion_detalles_reserva')->useCurrent();
-            $table->timestamp('actualizacion_detalles_reserva')->useCurrentOnUpdate();
+            $table->timestamp('actualizacion_detalles_reserva')->nullable()->useCurrentOnUpdate();
         });
     }
 

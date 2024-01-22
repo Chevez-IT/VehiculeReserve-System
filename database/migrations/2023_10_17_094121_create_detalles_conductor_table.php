@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('documentacion_conductor', 255);
             $table->enum('estado_conductor', ['Verificado', 'Rechazado']);
 
-            $table->foreign('solicitante_id')->references('solicitante_id')->on('solicitantes');
+            $table->foreign('solicitante_id')->references('solicitante_id')->on('solicitantes')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

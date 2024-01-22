@@ -20,11 +20,11 @@ return new class extends Migration
             $table->text('notas_mant');
             $table->string('creador_id', 12);
             $table->timestamp('creacion_mant')->useCurrent();
-            $table->timestamp('actualizacion_mant')->useCurrentOnUpdate();
+            $table->timestamp('actualizacion_mant')->nullable()->useCurrentOnUpdate();
             $table->enum('estado_mant', ['Realizado', 'Por realizar', 'Realizando']);
 
-            $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos');
-            $table->foreign('creador_id')->references('admin_id')->on('administradores');
+            $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('creador_id')->references('admin_id')->on('administradores')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -1,11 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\RolController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RestaurarContrasenaController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +13,7 @@ use App\Http\Controllers\Auth\RestaurarContrasenaController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
-
+ */
 
 Route::middleware('check.session')->group(function () {
     Route::view('/', 'acceso.login')->name('login.form');
@@ -30,22 +26,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Rutas de recuperacion de contraseña
-Route::post('/verificacion/correo', [RestaurarContrasenaController::class, 'checkCorreo']) ->name('verificar.correo');
-
-<<<<<<< HEAD
-=======
-//Usuario
-
-
-
-
-
-
-
-
-
-
->>>>>>> e81aba99c6236142d177c7165a2302e2f7f08544
+Route::post('/verificacion/correo', [RestaurarContrasenaController::class, 'checkCorreo'])->name('verificar.correo');
 
 /* Route::get('/insertar-usuarios', [UsuarioController::class, 'insertarUsuarios']);
 Route::get('/insertar-roles', [RolController::class, 'insertarRoles']); */

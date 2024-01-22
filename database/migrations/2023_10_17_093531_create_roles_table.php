@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('roles', function (Blueprint $table) {
-            $table->integer('rol_id', 5)->primary()->autoIncrement()->unsigned()->zerofill();
+            $table->integer('rol_id', 5)->autoIncrement()->unsigned()->zerofill();
             $table->string('rol', 25);
             $table->enum('estado', ['Activo', 'Inactivo']);
             $table->timestamp('creacion_rol')->useCurrent();

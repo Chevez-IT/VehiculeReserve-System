@@ -24,11 +24,11 @@ return new class extends Migration
             $table->string('galones_vehiculo', 50);
             $table->text('notas_vehiculo');
             $table->timestamp('creacion_vehiculo')->useCurrent();
-            $table->timestamp('actualizacion_vehiculo')->useCurrentOnUpdate();
+            $table->timestamp('actualizacion_vehiculo')->nullable()->useCurrentOnUpdate();
             $table->enum('estado_vehiculo', ['Activo', 'Inactivo', 'En mantenimiento']);
             $table->string('creador_id', 12);
 
-            $table->foreign('creador_id')->references('admin_id')->on('administradores');
+            $table->foreign('creador_id')->references('admin_id')->on('administradores')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

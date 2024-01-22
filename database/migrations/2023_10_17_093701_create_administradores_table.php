@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('telefono_admin', 100);
             $table->enum('estado_admin', ['Activo', 'Inactivo']);
             $table->timestamp('creacion_admin')->useCurrent();
-            $table->timestamp('actualizacion_admin')->useCurrentOnUpdate();
+            $table->timestamp('actualizacion_admin')->nullable()->useCurrentOnUpdate();
 
-            $table->foreign('usuario_id')->references('usuario_id')->on('usuarios');
+            $table->foreign('usuario_id')->references('usuario_id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

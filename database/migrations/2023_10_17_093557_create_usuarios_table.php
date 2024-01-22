@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('nombre_usuario', 100);
             $table->string('correo_usuario', 255);
             $table->string('contrasena_usuario', 255);
-            $table->integer('rol_id', 5);
+            $table->unsignedInteger('rol_id');
             $table->enum('estado_usuario', ['Activo', 'Inactivo']);
             $table->timestamp('creacion_usuario')->useCurrent();
-            $table->timestamp('actualizacion_usuario')->useCurrentOnUpdate();
+            $table->timestamp('actualizacion_usuario')->nullable()->useCurrentOnUpdate();
 
-            $table->foreign('rol_id')->references('rol_id')->on('roles');
+            $table->foreign('rol_id')->references('rol_id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

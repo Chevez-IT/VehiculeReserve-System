@@ -21,12 +21,12 @@ return new class extends Migration
             $table->string('encargado_id', 12)->nullable();
             $table->enum('estado_reserva', ['Aprobada', 'Rechazada', 'Realizada', 'En espera']);
             $table->timestamp('creacion_reserva')->useCurrent();
-            $table->timestamp('actualizacion_reserva')->useCurrentOnUpdate();
+            $table->timestamp('actualizacion_reserva')->nullable()->useCurrentOnUpdate();
 
-            $table->foreign('detalle_reserva_id')->references('detalle_reserva_id')->on('detalles_reservas');
-            $table->foreign('solicitante_id')->references('solicitante_id')->on('solicitantes');
-            $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos');
-            $table->foreign('encargado_id')->references('gestor_id')->on('gestores');
+            $table->foreign('detalle_reserva_id')->references('detalle_reserva_id')->on('detalles_reservas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('solicitante_id')->references('solicitante_id')->on('solicitantes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('encargado_id')->references('gestor_id')->on('gestores')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

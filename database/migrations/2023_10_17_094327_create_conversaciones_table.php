@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('usuario2', 10);
             $table->timestamp('creacion_conversacion')->useCurrent();
 
-            $table->foreign('usuario1')->references('usuario_id')->on('usuarios');
-            $table->foreign('usuario2')->references('usuario_id')->on('usuarios');
+            $table->foreign('usuario1')->references('usuario_id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('usuario2')->references('usuario_id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
