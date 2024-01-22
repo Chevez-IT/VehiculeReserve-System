@@ -14,14 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reservas', function (Blueprint $table) {
-            $table->string('reserva_id', 10)->primary();
+            $table->string('reserva_id', 10);
             $table->string('detalle_reserva_id', 12);
-            $table->string('detalle_conductor_id', 12);
+            $table->string('solicitante_id', 12);
+            $table->string('vehiculo_id', 10);
+            $table->string('encargado_id', 12)->nullable();
+            $table->enum('estado_reserva', ['Aprobada', 'Rechazada', 'Realizada', 'En espera']);
             $table->timestamp('creacion_reserva')->useCurrent();
-            $table->enum('estado_reserva', ['Activa', 'Inactiva', 'Realizada', 'Cancelada']);
-
-            $table->foreign('detalle_reserva_id')->references('detalle_reserva_id')->on('detalles_reserva')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('detalle_conductor_id')->references('detalle_conductor_id')->on('detalles_conductor')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamp('actualizacion_reserva')->useCurrentOnUpdate();
+        
+            $table->foreign('detalle_reserva_id')->references('detalle_reserva_id')->on('detalles_reservas');
+            $table->foreign('solicitante_id')->references('solicitante_id')->on('solicitantes');
+            $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos');
+            $table->foreign('encargado_id')->references('gestor_id')->on('gestores');
         });
     }
 

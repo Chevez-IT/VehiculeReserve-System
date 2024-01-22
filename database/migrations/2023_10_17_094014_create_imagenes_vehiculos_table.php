@@ -17,10 +17,9 @@ return new class extends Migration
             $table->string('imagen_id', 12);
             $table->string('vehiculo_id', 10);
             $table->string('nombre_imagen', 255);
-            $table->binary('imagen');
-
-            $table->primary('imagen_id');
-            $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('imagen', 255);
+        
+            $table->foreign('vehiculo_id')->references('vehiculo_id')->on('vehiculos');
         });
     }
 

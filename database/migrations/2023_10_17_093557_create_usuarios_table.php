@@ -14,15 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->string('usuario_id', 10)->primary();
+            $table->string('usuario_id', 10);
             $table->string('nombre_usuario', 100);
             $table->string('correo_usuario', 255);
             $table->string('contrasena_usuario', 255);
-            $table->unsignedBigInteger('rol_id');
+            $table->integer('rol_id', 5)->unsigned()->zerofill();
             $table->enum('estado_usuario', ['Activo', 'Inactivo']);
             $table->timestamp('creacion_usuario')->useCurrent();
-            $table->timestamp('actualizacion_usuario')->nullable()->default(null)->useCurrentOnUpdate();
-            $table->foreign('rol_id')->references('rol_id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamp('actualizacion_usuario')->useCurrentOnUpdate();
+        
+            $table->foreign('rol_id')->references('rol_id')->on('roles');
         });
     }
 

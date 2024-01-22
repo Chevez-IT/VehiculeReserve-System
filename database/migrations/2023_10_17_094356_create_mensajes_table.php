@@ -14,15 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mensajes', function (Blueprint $table) {
-            $table->string('mensaje_id', 10)->primary();
+            $table->string('mensaje_id', 10);
             $table->string('conversacion_id', 10);
             $table->string('emisor_id', 10);
             $table->text('mensaje');
+            $table->enum('estado_mensaje', ['Enviado', 'Leido']);
             $table->timestamp('creacion_mensaje')->useCurrent();
-            $table->enum('estado_mensaje', ['Enviado', 'Entregado', 'Leido', 'No entregado']);
-
-            $table->foreign('conversacion_id')->references('conversacion_id')->on('conversaciones')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('emisor_id')->references('usuario_id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+        
+            $table->foreign('emisor_id')->references('usuario_id')->on('usuarios');
+            $table->foreign('conversacion_id')->references('conversacion_id')->on('conversaciones');
         });
     }
 
