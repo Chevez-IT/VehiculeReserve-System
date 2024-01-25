@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Rol extends Model
@@ -11,10 +10,10 @@ class Rol extends Model
     protected $primaryKey = 'rol_id';
     public $timestamps = false;
 
-
     protected $fillable = [
+        'rol_id',
         'rol',
-        'estado_rol'
+        'estado_rol',
     ];
 
     public function usuarios()
